@@ -19,6 +19,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Private actions checkout
+        env:
+          http_proxy: "http://172.31.68.203:3128"
+          https_proxy: "http://172.31.68.203:3128"
         uses: ./
         with:
           actions_list: ${{ env.PRIVATE_CUSTOM_ACTIONS }}
