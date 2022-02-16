@@ -10,10 +10,10 @@ env:
 jobs:
   app-key-base64:
     name: GitHub app private checkout with a base64 key encoded
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, macos-10.15]
+        os: [ubuntu-20.04]
 
     steps:
       - uses: actions/checkout@v2
@@ -33,10 +33,10 @@ jobs:
 
   app-key-plain:
     name: GitHub app private checkout with a plain key encoded
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, macos-10.15]
+        os: [ubuntu-20.04]
 
     steps:
       - uses: actions/checkout@v2
