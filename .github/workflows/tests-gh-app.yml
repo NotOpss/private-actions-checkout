@@ -22,35 +22,14 @@ jobs:
         env:
           http_proxy: "http://172.31.68.203:3128"
           https_proxy: "http://172.31.68.203:3128"
+          HTTP_PROXY: "http://172.31.68.203:3128"
+          HTTPS_PROXY: "http://172.31.68.203:3128"
         uses: ./
         with:
           actions_list: ${{ env.PRIVATE_CUSTOM_ACTIONS }}
           checkout_base_path: ./.github/actions
           app_id: ${{ secrets.APP_ID }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY_BASE64 }}
-
-      - name: Say hello
-        uses: ./.github/actions/private-custom-action-2
-        with:
-          who_to_greet: World
-
-  app-key-plain:
-    name: GitHub app private checkout with a plain key encoded
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        os: [ubuntu-20.04]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Private actions checkout
-        uses: ./
-        with:
-          actions_list: ${{ env.PRIVATE_CUSTOM_ACTIONS }}
-          checkout_base_path: ./.github/actions
-          app_id: ${{ secrets.APP_ID }}
-          app_private_key: ${{ secrets.APP_PRIVATE_KEY_PLAIN }}
 
       - name: Say hello
         uses: ./.github/actions/private-custom-action-2
